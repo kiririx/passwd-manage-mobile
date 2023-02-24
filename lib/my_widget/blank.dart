@@ -24,18 +24,9 @@ class BlankColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //     width: width,
-    //     height: 10,
-    //     decoration:
-    //         BoxDecoration(color: backgroundColor, borderRadius: borderRadius));
-    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-      return ConstrainedBox(
-        constraints: BoxConstraints.expand(height: constraints.maxHeight, width: width),
-        child: Container(
-          decoration: BoxDecoration(color: backgroundColor, borderRadius: borderRadius),
-        ),
-      );
-    },);
+    return Container(
+        width: width,
+        decoration:
+            BoxDecoration(color: backgroundColor, borderRadius: borderRadius));
   }
 }

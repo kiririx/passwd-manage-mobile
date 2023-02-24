@@ -14,7 +14,7 @@ class PasswdRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 50.0,
+      height: 55.0,
       width: 350,
       // padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
       decoration: BoxDecoration(
