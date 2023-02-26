@@ -1,4 +1,4 @@
-/// qa列表
-const apiQAList = "/qa/list";
-/// qa内容
-const apiQAContent = "qa/:qa_hash";
+/// 密码列表
+const apiPasswdList = "/passwdInfos";
+/// 密码内容
+const apiPasswdContent = "qa/:qa_hash";

@@ -90,10 +90,13 @@ class _KernelPageState extends State<KernelPage> {
   }
 
   void loadQAList() {
-    ApiClient.get(apiQAList).then((val) {
+    ApiClient.get(apiPasswdList, query: {
+      "pageNum": 0,
+      "pageSize": 20
+    }).then((val) {
       setState(() {
         _qaList.clear();
-        List<dynamic> list = val.data['list'];
+        List<dynamic> list = val.data['passwds'];
         for (var element in list) {
           _qaList.add(element);
         }
@@ -168,7 +171,7 @@ class _KernelPageState extends State<KernelPage> {
 
               widgetList.add(const BlankRow(height: 10));
               widgetList.add(PasswdRow(
-                title: qaContent['title'],
+                title: qaContent['topic'],
                 theme: contentThemes[contentThemePointer],
                 tapFunc: () {
                   Navigator.push(
