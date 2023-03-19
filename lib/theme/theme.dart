@@ -39,7 +39,7 @@ enum ThemeContent {
 enum ThemeGlobal {
   orange(
       topBarColor: Color(0xffffefcc),
-      bodyColor: Color(0xffffefcc),
+      bodyColor: Color(0xffFFF5E9),
       topBarTextColor: Color(0xff000000),
       bottomColor: Color(0xffffefcc),
       bottomIconSelectedColor: Color(0xffF09825),

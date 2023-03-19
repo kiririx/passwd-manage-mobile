@@ -203,7 +203,8 @@ class _KernelPageState extends State<KernelPage> {
                               ListTile(
                                 leading: const Icon(Icons.videocam),
                                 title: Text('备注'),
-                                subtitle: Text('这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述\n\n\n\n'),
+                                subtitle: Text(
+                                    '这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述\n\n\n\n'),
                                 onTap: () {
                                   // do something
                                   // Navigator.pop(context);
@@ -354,7 +355,7 @@ class _KernelPageState extends State<KernelPage> {
           Navigator.push(
                   context,
                   routeAddOrEditPage(globalTheme, currentTimeDimension,
-                      topBarLabel: 'topBarLbl', title: "", content: ""))
+                      title: "", content: ""))
               .then((value) => afterSave());
         },
         child: Icon(

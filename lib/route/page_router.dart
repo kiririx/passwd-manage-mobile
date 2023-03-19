@@ -19,13 +19,12 @@ import 'package:flutter/widgets.dart';
 
 /// 添加/编辑页面
 routeAddOrEditPage(ThemeGlobal theme, TimeDimension timeDimension,
-    {required String topBarLabel,
+    { String topBarLabel = "新建条目",
     required String title,
     required String content}) {
   return MaterialPageRoute(builder: (ctx) {
     return AddOrEditPage(
       theme: theme,
-      timeDimension: timeDimension,
       topBarLabel: topBarLabel,
       title: title,
       content: content,

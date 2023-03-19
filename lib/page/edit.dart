@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
+import '../share_data.dart';
+
 class AddOrEditPage extends StatefulWidget {
   const AddOrEditPage(
       {Key? key,
       required this.theme,
-      required this.timeDimension,
       this.dataId,
       required this.topBarLabel,
       required this.title,
@@ -16,9 +17,6 @@ class AddOrEditPage extends StatefulWidget {
       : super(key: key);
 
   final ThemeGlobal theme;
-
-  /// 时间维度参数
-  final TimeDimension timeDimension;
 
   /// id
   final String? dataId;
@@ -51,6 +49,7 @@ class AddOrEditPageState extends State<AddOrEditPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: widget.theme.bodyColor,
       appBar: AppBar(
         backgroundColor: widget.theme.topBarColor,
         title: Text(
@@ -63,37 +62,69 @@ class AddOrEditPageState extends State<AddOrEditPage> {
             Navigator.pop(context);
           },
         ),
+
       ),
       body: Center(
+        
+        child: Padding(padding: const EdgeInsets.all(16.0),
         child: Column(
-          children: [
-            // 标题编辑框
-            SizedBox(
-                child: TextField(
-              // 当title是空的时候，就说明是新增的数据，所以焦点应该在这里，content的逻辑同理
-              autofocus: _titleCtrl.text == "",
-              controller: _titleCtrl,
-              decoration: const InputDecoration(
-                  border: InputBorder.none, contentPadding: EdgeInsets.all(15)),
-            )),
-            // 内容编辑框
-            SizedBox(
-                child: TextField(
-                    autofocus: _titleCtrl.text != "",
-                    keyboardType: TextInputType.multiline,
-                    controller: _contentCtrl,
-                    maxLines: null,
-                    textAlignVertical: TextAlignVertical.top,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(15)),
-                    inputFormatters: [
-                      // max input count
-                      LengthLimitingTextInputFormatter(1000),
-                    ],
-                    style: const TextStyle(height: 1.5)))
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              decoration: InputDecoration(labelText: '标题'),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter your name';
+                }
+                return null;
+              },
+              onSaved: (value) {
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: '用户名'),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter your email';
+                }
+                return null;
+              },
+              onSaved: (value) {
+              },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(labelText: '密码'),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter your name';
+                }
+                return null;
+              },
+              onSaved: (value) {
+              },
+            ),
+            TextFormField(
+              // 设置为null，将允许多行输入
+              maxLines: null,
+              decoration: const InputDecoration(labelText: '描述'),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter your name';
+                }
+                return null;
+              },
+              onSaved: (value) {
+              },
+            ),
           ],
-        ),
+        ),),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // 在此处添加悬浮按钮的点击事件处理代码
+        },
+        backgroundColor: Colors.orangeAccent,
+        child: const Icon(Icons.check),
       ),
     );
   }
