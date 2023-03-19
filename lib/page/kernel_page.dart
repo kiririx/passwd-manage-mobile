@@ -80,20 +80,13 @@ class _KernelPageState extends State<KernelPage> {
     loadQAList();
   }
 
+  void onLeftArrowPressed() {}
 
-  void onLeftArrowPressed() {
-
-  }
-
-  void onRightArrowPressed() {
-
-  }
+  void onRightArrowPressed() {}
 
   void loadQAList() {
-    ApiClient.get(apiPasswdList, query: {
-      "pageNum": 0,
-      "pageSize": 20
-    }).then((val) {
+    ApiClient.get(apiPasswdList, query: {"pageNum": 0, "pageSize": 20})
+        .then((val) {
       setState(() {
         _qaList.clear();
         List<dynamic> list = val.data['passwds'];
@@ -153,7 +146,6 @@ class _KernelPageState extends State<KernelPage> {
 
   createHomePageBody() {
     var globalTheme = ShareDataWidget.of(context)!.data.theme;
-    var currentTimeDimension = TimeDimension.day;
     return RefreshIndicator(
       onRefresh: () async {
         loadQAList();
@@ -174,13 +166,53 @@ class _KernelPageState extends State<KernelPage> {
                 title: qaContent['topic'],
                 theme: contentThemes[contentThemePointer],
                 tapFunc: () {
-                  Navigator.push(
-                          context,
-                          routeAddOrEditPage(globalTheme, currentTimeDimension,
-                              topBarLabel: 'topBarLabel',
-                              title: qaContent['title'],
-                              content: qaContent['content']))
-                      .then((value) => afterSave());
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          color: globalTheme.bodyColor,
+                          child: Wrap(
+                            children: <Widget>[
+                              ListTile(
+                                leading: Icon(Icons.music_note),
+                                title: Text('标题'),
+                                subtitle: Text('腾讯云'),
+                                onTap: () {
+                                  // do something
+                                  // Navigator.pop(context);
+                                },
+                              ),
+                              ListTile(
+                                leading: const Icon(Icons.videocam),
+                                title: Text('用户名'),
+                                subtitle: Text('1102321323'),
+                                onTap: () {
+                                  // do something
+                                  // Navigator.pop(context);
+                                },
+                              ),
+                              ListTile(
+                                leading: const Icon(Icons.videocam),
+                                title: Text('密码'),
+                                subtitle: Text('************'),
+                                onTap: () {
+                                  // do something
+                                  // Navigator.pop(context);
+                                },
+                              ),
+                              ListTile(
+                                leading: const Icon(Icons.videocam),
+                                title: Text('备注'),
+                                subtitle: Text('这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述这是一个描述\n\n\n\n'),
+                                onTap: () {
+                                  // do something
+                                  // Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      });
                 },
               ));
               // 增加计数器

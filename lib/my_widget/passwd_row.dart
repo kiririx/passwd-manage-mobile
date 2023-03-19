@@ -9,11 +9,11 @@ class PasswdRow extends StatelessWidget {
 
   final ThemeContent theme;
 
-  final Function? tapFunc;
+  final void Function()? tapFunc;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    var container = Container(
       height: 55.0,
       width: 350,
       // padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
@@ -23,15 +23,6 @@ class PasswdRow extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SizedBox(
-            child: BlankColumn(
-              width: 15,
-              backgroundColor: theme.borderColor,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  bottomLeft: Radius.circular(10)),
-            ),
-          ),
           Expanded(
               child: Column(
                 children: [
@@ -57,5 +48,6 @@ class PasswdRow extends StatelessWidget {
         ],
       ),
     );
+    return GestureDetector(onTap: tapFunc, child: container,);
   }
 }
