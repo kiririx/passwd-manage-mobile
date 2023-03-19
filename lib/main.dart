@@ -25,7 +25,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
+        inputDecorationTheme: const InputDecorationTheme(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Color(0xffc9c9c9)), // 设置底部线颜色
+          ),
+        ),
       ),
       home: ShareDataWidget(
         data: ShareData(theme: widget.theme),
