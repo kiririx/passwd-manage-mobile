@@ -13,7 +13,7 @@ class Resp {
       : code = json['code'],
         data = json['data'],
         errMsg = json['errMsg'];
-} 
+}
 
 class ApiClient {
   static Future<Resp> get(String path, {Map<String, String>? pathVariable,
@@ -25,7 +25,7 @@ class ApiClient {
       });
     }
     var dio = Dio();
-    dio.options.headers = {'Authorization':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJraXJpcml4IiwiZXhwIjoxNjgwNjcwMzA4LCJpc3MiOiJhZG1pbiJ9.WcNfTlYnwgSKvE4cC0CBuw-JAMFuh27ABt331eCInl4'};
+    dio.options.headers = {'Authorization':''};
     var resp = await dio.get(url, queryParameters: query);
     if (resp.statusCode != 200) {
       return Resp(resp.statusCode!, {}, "http请求错误");
