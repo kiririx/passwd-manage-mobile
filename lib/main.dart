@@ -3,6 +3,10 @@ import 'package:passwd_manage_mobile/share_data.dart';
 import 'package:passwd_manage_mobile/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+
+const platform = MethodChannel('com.example.icloud/save');
 
 void main() {
   runApp(const MyApp(theme: ThemeGlobal.orange));
@@ -40,3 +44,14 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+Future<void> _saveFileToICloud(String filename, String content) async {
+  try {
+    final result = await platform.invokeMethod('saveFileToICloud', {
+      'filename': filename,
+      'content': content,
+    });
+    print(result);
+  } on PlatformException catch (e) {
+    print('Error: ${e.message}');
+  }
+}

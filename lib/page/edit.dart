@@ -3,6 +3,7 @@ import 'package:passwd_manage_mobile/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:passwd_manage_mobile/utils/ICloudHelper.dart';
 
 import '../share_data.dart';
 
@@ -122,6 +123,7 @@ class AddOrEditPageState extends State<AddOrEditPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // 在此处添加悬浮按钮的点击事件处理代码
+          ICloudHelper().saveFileToICloud("11111.txt", "abcdefg");
         },
         backgroundColor: Colors.orangeAccent,
         child: const Icon(Icons.check),
